@@ -40,3 +40,16 @@ body {
 .gif-card img {
   width: 100%;
 }
+
+.book-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cards {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem;
+}

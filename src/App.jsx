@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./style.css";
 import AddBook from "./components/AddBook";
 import BookList from "./components/BookList";
+import BookCard from "./components/BookCard";
 
 const App = () => {
   return (
