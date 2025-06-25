@@ -47,9 +47,17 @@ body {
 }
 
 .cards {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 500px;
   border-radius: 10px;
   overflow: hidden;
   margin: 1rem;
+  border: solid;
+  border-color: white;
+  padding: 20px;
+}
+
+.card-img {
+  width: 250px;
+  height: 300px;
 }
