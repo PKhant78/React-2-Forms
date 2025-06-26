@@ -1,50 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../style.css";
 
-const BookCard = ({ data }) => {
+const BookCard = ({ book }) => {
+  const [coverUrl, setCoverUrl] = useState(
+    "https://via.placeholder.com/150x200?text=No+Cover"
+  );
+
+  useEffect(() => {
+    const fetchCover = async () => {
+      try {
+        const res = await fetch(
+          `https://openlibrary.org/search.json?title=${encodeURIComponent(
+            book.title
+          )}`
+        );
+        const data = await res.json();
+        const coverId = data?.docs?.[0]?.cover_i;
+        if (coverId) {
+          setCoverUrl(
+            `https://covers.openlibrary.org/b/id/${coverId}-L.jpg`
+          );
+        }
+      } catch (err) {
+        console.error("Cover fetch error:", err);
+      }
+    };
+
+    fetchCover();
+  }, [book.title]);
+
+  const stars = "★".repeat(book.rating) + "☆".repeat(5 - book.rating);
+
   return (
-    <div className="cards" key={data?.id}>
-      <div className="card-title">
-        <h3> {data?.title}</h3>
-      </div>
+    <div className="book-card">
+      {/* cover */}
+      <img
+        src={coverUrl}
+        alt={`${book.title} cover`}
+        className="book-image-placeholder"
+      />
 
-      <div className="card-info">
-        <p>Author: {data?.author}</p>
-        <p>Published Date: {data?.publishedDate}</p>
-        <p>Rating: {data?.rating}</p>
-      </div>
+      {/* content */}
+      <div className="book-content">
+        <h3 className="book-title">{book.title}</h3>
+        <p className="book-author">{book.author}</p>
 
-      <div className="card-img-box">
-        <img
-          className="card-img"
-          src="https://covers.openlibrary.org/b/id/10523300-L.jpg"
-        />
-      </div>
+        {/* category badge */}
+        {book.category && (
+          <span className={`badge ${book.category.toLowerCase()}`}>
+            {book.category.toUpperCase()}
+          </span>
+        )}
 
-      <div className="category-display">
-        <p>Category: {data?.category}</p>
-      </div>
+        {/* published date */}
+        {book.publishedDate && (
+          <p className="book-date">Published: {book.publishedDate}</p>
+        )}
 
-      <div className="check-read-button">
-        <input
-          type="checkbox"
-          id={data?.id}
-          name="isRead"
-          value="Read"
-          defaultChecked={data?.isRead}
-        ></input>
-        <label htmlFor="isRead">Read</label>
-      </div>
+        {/* rating */}
+        <div className="rating">{stars}</div>
 
-      <div className="check-favorite-button">
-        <input
-          type="checkbox"
-          id={data?.id}
-          name="isFavorite"
-          value="Favorite"
-          defaultChecked={data?.isFavorite}
-        ></input>
-        <label htmlFor="isFavorite">Favorite</label>
+        {/* read / favorite flags (read-only) */}
+        <div className="check-buttons" style={{ marginTop: "0.75rem" }}>
+          <label>
+            <input type="checkbox" readOnly checked={book.isRead} /> Read
+          </label>
+          <label style={{ marginLeft: "1rem" }}>
+            <input type="checkbox" readOnly checked={book.isFavorite} /> Favorite
+          </label>
+        </div>
       </div>
     </div>
   );

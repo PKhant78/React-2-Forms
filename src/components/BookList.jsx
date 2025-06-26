@@ -1,44 +1,47 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import BookCard from "./BookCard";
 
-const BookList = ({ books, setBookList }) => {
-  // default text for sort-button
+const BookList = ({ books, setBooks }) => {
+  const [ascending, setAscending] = useState(true);
   const [buttonText, setButtonText] = useState(
-    "Sort By Rating in Descending Order"
+    "Sort By Rating (Descending)"
   );
 
-  // to switch between ascending and descending
-  const [ascending, setAscending] = useState(true);
-
-  // sort-button click
   const handleClick = () => {
-    const sorted = [...books].sort((a, b) => {
-      return ascending ? b.rating - a.rating : a.rating - b.rating;
-    });
-    setBookList(sorted);
-
-    setButtonText(
-      ascending
-        ? "Sort By Rating in Ascending Order"
-        : "Sort By Rating in Descending Order"
+    const sorted = [...books].sort((a, b) =>
+      ascending ? b.rating - a.rating : a.rating - b.rating
     );
+    setBooks(sorted);
     setAscending(!ascending);
+    setButtonText(
+      ascending ? "Sort By Rating (Ascending)" : "Sort By Rating (Descending)"
+    );
   };
+
+  if (!books.length) return <p>No books yet.</p>;
 
   return (
     <>
-      <div>
-        <button id="sort-button" onClick={handleClick}>
-          {buttonText}
-        </button>
+      <div style={{ textAlign: "center", margin: "1rem" }}>
+        {setBooks && (
+          <button id="sort-button" onClick={handleClick}>
+            {buttonText}
+          </button>
+        )}
       </div>
-      <div className="book-card-container">
-        {books.map((bookData) => (
-          <BookCard key={bookData.id} data={bookData} />
+      <div className="book-grid">
+        {books.map((book, idx) => (
+          <BookCard key={idx} book={book} />
         ))}
       </div>
     </>
   );
+};
+
+BookList.propTypes = {
+  books: PropTypes.array.isRequired,
+  setBooks: PropTypes.func, // optional – only required if sorting is enabled
 };
 
 export default BookList;
