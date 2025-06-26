@@ -4,36 +4,45 @@ import "../style.css";
 const BookCard = ({ data }) => {
   return (
     <div className="cards" key={data?.id}>
-      <h3> {data?.title}</h3>
-      <br />
-      <p>Author: {data?.author}</p>
-      <p>Published Date: {data?.publishedDate}</p>
-      <p>Rating: {data?.rating}</p>
-      <br />
+      <div className="card-title">
+        <h3> {data?.title}</h3>
+      </div>
+
+      <div className="card-info">
+        <p>Author: {data?.author}</p>
+        <p>Published Date: {data?.publishedDate}</p>
+        <p>Rating: {data?.rating}</p>
+      </div>
+
       <img
         className="card-img"
         src="https://covers.openlibrary.org/b/id/10523300-L.jpg"
       />
-      <br />
-      <div className="checkbox-button">
+
+      <div className="category-display">
+        <p>Category: {data?.category}</p>
+      </div>
+
+      <div className="check-read-button">
         <input
           type="checkbox"
-          id="isRead"
+          id={data?.id}
           name="isRead"
           value="Read"
           defaultChecked={data?.isRead}
         ></input>
         <label htmlFor="isRead">Read</label>
-        <br />
+      </div>
+
+      <div className="check-favorite-button">
         <input
           type="checkbox"
-          id="isFavorite"
+          id={data?.id}
           name="isFavorite"
           value="Favorite"
           defaultChecked={data?.isFavorite}
         ></input>
         <label htmlFor="isFavorite">Favorite</label>
-        <br />
       </div>
     </div>
   );
