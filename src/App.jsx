@@ -89,6 +89,8 @@ const App = () => {
     ];
   });
 
+  const [showAddForm, setShowAddForm] = useState(false);
+
   const [filters, setFilters] = useState({
     search: "",
     category: "",
@@ -134,7 +136,18 @@ const App = () => {
   return (
     <div className="app">
       <h1 className="title" style={{ textAlign: "center", width: "100%", margin: "2rem 0" }}>Akashic Records 📝</h1>
-      <AddBook onAddBook={handleAddBook} />
+      <button
+        className="toggle-add-btn"
+        onClick={() => setShowAddForm(prev => !prev)}
+      > 
+        {showAddForm ? "✖ Cancel" : "➕ Add a Book"}
+      </button>
+      {showAddForm && (
+        <AddBook
+          onAddBook={handleAddBook}
+          onCancel={() => setShowAddForm(false)}   /* optional cancel prop */
+        />
+      )}
       <SearchBar filters={filters} setFilters={setFilters} />
       <BookList books={filteredBooks} />
     </div>

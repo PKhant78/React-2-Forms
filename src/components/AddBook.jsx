@@ -87,7 +87,7 @@ const AddBook = () => {
 
   return (
     <div className="form-field">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="add-book-form">
         <input
           placeholder="Enter book title"
           required
@@ -112,15 +112,19 @@ const AddBook = () => {
           value={book.date}
           onChange={handleDateChange}
         ></input>
-        <input
-          required
-          type="number"
-          name="rating"
-          min="1"
-          max="5"
-          value={book.rating}
-          onChange={handleRating}
-        ></input>
+        <label>
+          Rate from 1-5
+          <input
+            required
+            type="number"
+            name="rating"
+            placeholder="Rating"
+            min="1"
+            max="5"
+            value={book.rating}
+            onChange={handleRating}
+          ></input>
+        </label>
         <label>
           Have you read this book?
           <input
@@ -144,11 +148,30 @@ const AddBook = () => {
           value={book.category}
           onChange={handleCategoryChange}
         >
-          <option value="Non-fiction">Non-Fiction</option>
           <option value="Fiction">Fiction</option>
-          <option value="Horror">Horror</option>
-          <option value="Romance">Romance </option>
+          <option value="Non-fiction">Non-Fiction</option>
+          <option value="Poetry">Poetry</option>
+          <option value="Drama">Drama</option>
+          <option value="Biography">Biography</option>
+          <option value="History">History</option>
+          <option value="Science">Science</option>
+          <option value="Technology">Technology</option>
+          <option value="Art">Art</option>
+          <option value="Music">Music</option>
+          <option value="Travel">Travel</option>
+          <option value="Cooking">Cooking</option>
+          <option value="Gardening">Gardening</option>
           <option value="Psychology">Psychology</option>
+          <option value="Sociology">Sociology</option>
+          <option value="Education">Education</option>
+          <option value="Religion">Religion</option>
+          <option value="Philosophy">Philosophy</option>
+          <option value="Health">Health</option>
+          <option value="Business">Business</option>
+          <option value="Finance">Finance</option>
+          <option value="Literature">Literature</option>
+          <option value="Horror">Horror</option>
+          <option value="Romance">Romance</option>
         </select>
         <button type="submit">Submit Book</button>
       </form>
