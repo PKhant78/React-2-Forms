@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import BookCard from "./BookCard";
 
 const BookList = ({ books, setBookList }) => {
-  // default text for sorting button
+  // default text for sort-button
   const [buttonText, setButtonText] = useState(
-    "Sort Rating in Descending Order"
+    "Sort By Rating in Descending Order"
   );
 
   // to switch between ascending and descending
@@ -19,8 +19,8 @@ const BookList = ({ books, setBookList }) => {
 
     setButtonText(
       ascending
-        ? "Sort Rating in Ascending Order"
-        : "Sort Rating in Descending Order"
+        ? "Sort By Rating in Ascending Order"
+        : "Sort By Rating in Descending Order"
     );
     setAscending(!ascending);
   };

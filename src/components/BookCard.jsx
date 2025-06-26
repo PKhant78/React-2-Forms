@@ -14,10 +14,12 @@ const BookCard = ({ data }) => {
         <p>Rating: {data?.rating}</p>
       </div>
 
-      <img
-        className="card-img"
-        src="https://covers.openlibrary.org/b/id/10523300-L.jpg"
-      />
+      <div className="card-img-box">
+        <img
+          className="card-img"
+          src="https://covers.openlibrary.org/b/id/10523300-L.jpg"
+        />
+      </div>
 
       <div className="category-display">
         <p>Category: {data?.category}</p>

@@ -25,6 +25,16 @@ const sampleData = [
     isRead: false,
     isFavorite: false,
   },
+  {
+    id: 3,
+    title: "V.",
+    author: "Thomas Pynchon",
+    publishedDate: "1963",
+    rating: 4,
+    category: "Literature",
+    isRead: false,
+    isFavorite: false,
+  },
 ];
 
 const App = () => {
