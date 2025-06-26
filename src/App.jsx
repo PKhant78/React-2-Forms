@@ -10,15 +10,15 @@ const App = () => {
     const stored = localStorage.getItem("books");
     return stored ? JSON.parse(stored) : [
       {
-      title: "Becoming Dickens: The Invention of a Novelist",
-      author: "Robert Douglas-Fairhurst",
-      rating: 5,
-      isRead: true,
-      isFavorite: false,
-      category: "history",
-      publishedDate: "2011-08-23",
-      image: "",
-      description: "A rich biography exploring Dickens’ early career and his transformation through memory and personal struggle."
+        title: "Becoming Dickens: The Invention of a Novelist",
+        author: "Robert Douglas-Fairhurst",
+        rating: 5,
+        isRead: true,
+        isFavorite: false,
+        category: "history",
+        publishedDate: "2011-08-23",
+        image: "",
+        description: "A rich biography exploring Dickens’ early career and his transformation through memory and personal struggle."
       },
       {
         title: "The Waste Land",
@@ -52,6 +52,39 @@ const App = () => {
         publishedDate: "1966-01-01",
         image: "",
         description: "A historical study tracing how memory was conceptualized and trained from ancient Rome through the Renaissance."
+      },
+      {
+        title: "Faust",
+        author: "Johann Wolfgang Goethe",
+        publishedDate: "1790",
+        rating: 2,
+        category: "literature",
+        isRead: true,
+        isFavorite: true,
+        image: "",
+        description: "A tragic play exploring the consequences of ambition, temptation, and the quest for knowledge."
+      },
+      {
+        title: "The Republic",
+        author: "Plato",
+        publishedDate: "360 BCE",
+        rating: 4,
+        category: "philosophy",
+        isRead: false,
+        isFavorite: false,
+        image: "",
+        description: "A foundational text of Western philosophy, discussing justice, politics, and the ideal state."
+      },
+      {
+        title: "V.",
+        author: "Thomas Pynchon",
+        publishedDate: "1963",
+        rating: 4,
+        category: "literature",
+        isRead: false,
+        isFavorite: false,
+        image: "",
+        description: "A postmodern novel that dives into conspiracy, memory, and fragmented identity across time."
       }
     ];
   });

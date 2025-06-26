@@ -22,19 +22,64 @@
 }
 
 .app * {
-  color: #ffffff;
+  color: beige;
 }
 
-.gif-card {
-  width: 200px;
-  height: 200px;
+.book-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cards {
+  width: 300px;
+  height: 500px;
   border-radius: 10px;
   overflow: hidden;
   margin: 1rem;
+  border: solid;
+  border-color: beige;
+  padding: 20px;
+  background-color: #556b2f;
 }
 
-.gif-card img {
-  width: 100%;
+.card-img {
+  width: 250px;
+  height: 280px;
+  padding-top: 2px;
+  padding-bottom: 5px;
+}
+
+.card-img-box {
+  display: flex;
+  justify-content: center;
+}
+
+.card-info {
+  padding-bottom: 2px;
+  padding-top: 10%;
+  width: 250px;
+  height: 90px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+#sort-button {
+  border-radius: 4px;
+  border-color: beige;
+  border-style: solid;
+  background-color: #556b2f;
+  color: beige;
+  padding: 5px;
+}
+
+#sort-button:hover {
+  background-color: #264b36;
+}
+
+.category-display {
+  padding-bottom: 5px;
 }
 
 
