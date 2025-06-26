@@ -13,7 +13,7 @@ import React, { useState } from "react";
  * - isFavorite (boolean, default false)
  */
 
-const AddBook = () => {
+const AddBook = ({ onAddBook }) => {
   const [book, setBook] = useState({
     title: "",
     author: "",
@@ -82,6 +82,17 @@ const AddBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onAddBook(book);
+
+    setBook({
+      title: "",
+      author: "",
+      date: "",
+      category: "",
+      rating: 1,
+      isRead: false,
+      isFavorite: false,
+    });
     console.log(book);
   };
 
